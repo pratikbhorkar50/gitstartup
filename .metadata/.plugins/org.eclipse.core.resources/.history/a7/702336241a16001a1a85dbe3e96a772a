@@ -23,7 +23,7 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public List<User> checkUser(String username, String password) {
 
-		System.out.println("for git");
+		
 		String sqlall="select * from users";
 		List<User> ulist=jdbcTemplate.query(sqlall,new RowMapper<User>() {
 			
