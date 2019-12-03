@@ -1,0 +1,44 @@
+package com.training.controller;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.mysql.cj.Session;
+import com.training.service.UserService;
+
+@Controller
+public class UserController {
+	
+	@Autowired
+	UserService userService;
+	
+	@RequestMapping("/")
+	public String Area()
+	{
+		return "index";
+	}
+	
+	@RequestMapping("/validateuser")
+	public ModelAndView ValidateUserWithDB(@RequestParam("username")String username,@RequestParam("password")String password)
+	{
+		HttpSession usernameSession;
+		boolean ans=userService.checkUser(username,password);
+		if(ans)
+		{
+			return new ModelAndView("welcome","command",new Object());
+		}
+		else
+		{
+			return new ModelAndView("redirect:/");
+		}
+		
+	}
+	
+	
+
+}

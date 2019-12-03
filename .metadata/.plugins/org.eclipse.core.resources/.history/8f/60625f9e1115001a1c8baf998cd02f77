@@ -1,0 +1,32 @@
+package com.training.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.training.beans.User;
+
+@Controller
+public class UserController {
+	
+	@RequestMapping("/")
+	public String Area()
+	{
+		return "index";
+	}
+	
+	@RequestMapping("/validateuser")
+	public ModelAndView ValidateUserWithDB(@RequestParam("username")String username,@RequestParam("password")String password)
+	{
+		User u= new User();
+		if(u==null)
+		{
+			System.out.println("hello world");
+		}
+		return new ModelAndView("welcome","command",new Object());
+	}
+	
+	
+
+}

@@ -1,0 +1,30 @@
+package com.training.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+
+import com.training.beans.User;
+
+@Repository
+public class UserDaoImpl implements UserDao{
+
+	@Autowired
+	JdbcTemplate jdbcTemplate;
+	
+	@Override
+	public void checkUser(String username, String password) {
+		// TODO Auto-generated method stub
+		String sql="select * from user where username=? and password=?";
+		User u=jdbcTemplate.queryForObject(sql,new Object[] {username,password},new RowMapper<User>() {
+			
+			
+			
+			
+		});
+				
+	}
+	
+
+}

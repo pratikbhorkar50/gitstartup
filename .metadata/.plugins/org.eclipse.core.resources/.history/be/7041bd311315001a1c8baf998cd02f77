@@ -1,0 +1,7 @@
+package com.training.dao;
+
+public interface UserDao {
+
+	void checkUser(String username, String password);
+
+}
